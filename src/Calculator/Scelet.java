@@ -14,7 +14,7 @@ public class Scelet extends JFrame{
         JFrame frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        frame.setSize(320,240);
+        frame.setSize(350,300);
 
 
         Container container = this.getContentPane();
