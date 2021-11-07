@@ -12,9 +12,10 @@ import java.awt.Menu.*;
 public class Panel extends JPanel {
 
     private JButton buttons[] = new JButton[10];
+    private JButton date = new JButton(".");
     private Font font = new Font("SanSerif",Font.BOLD,20);
     private JTextField output = new JTextField();
-    private JButton backspace = new JButton("<"), equ = new JButton("=");
+    private JButton backspace = new JButton("<"), equ = new JButton("= конечно же сегодня");
 
 
 
@@ -23,35 +24,36 @@ public class Panel extends JPanel {
         setFocusable(true);//
         grabFocus();
 
-        backspace.setBounds(205,10,50,50);
+        backspace.setBounds(505,10,50,50);
         backspace.setFont(font);
         add(backspace);
-        equ.setBounds(10,250,50,50);
+
+        equ.setBounds(310,250,50,50);
         equ.setFont(font);
         add(equ);
 
         buttons[0] = new JButton("0");
-        buttons[0].setBounds(70,250, 50,50);
+        buttons[0].setBounds(370,250, 50,50);
         buttons[0].setFont(font);
         add(buttons[0]);
 
-        buttons[1] = new JButton(".");
-        buttons[1].setBounds(130,250, 50,50);
-        buttons[1].setFont(font);
-        add(buttons[1]);
+        date = new JButton(".");
+        date.setBounds(430,250, 50,50);
+        date.setFont(font);
+        add(date);
 
         for(int x = 0; x < 3; x++){
             for(int y = 0; y < 3; y++){
                 buttons[x * 3 + y + 1] = new JButton((x * 3 + y + 1) + "");
-                buttons[x * 3 + y + 1].setBounds(x * (50 + 10) + 10, y * (50+10) + 70, 50, 50);
+                buttons[x * 3 + y + 1].setBounds(300 + x * (50 + 10) + 10, y * (50+10) + 70, 50, 50);
                 buttons[x * 3 + y + 1].setFont(font);
                 add(buttons[x * 3 + y + 1]);
 
             }
         }
-        output.setBounds(10,10,180,50);
+        output.setBounds(10,10,300,500);
         output.setFont(font);
-        output.setEditable(false);
+        output.setEditable(true);
         add(output);
 
         ActionListener l = (ActionEvent e) -> {//лямбдавыражение(реализуем метод)
@@ -62,6 +64,7 @@ public class Panel extends JPanel {
         for(JButton b : buttons){
             b.addActionListener(l);
         }
+        equ.addActionListener(l);
 
         addKeyListener(new KeyAdapter() {
             @Override
